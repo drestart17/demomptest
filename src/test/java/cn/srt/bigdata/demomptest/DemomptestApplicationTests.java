@@ -36,8 +36,8 @@ class DemomptestApplicationTests {
         //创建一个User对象
         User user = new User();
         //设置这个对象的属性
-        user.setName("李四");
-        user.setAge(20);
+        user.setName("wangwu2");
+        user.setAge(26);
         user.setEmail("1234@qq.com");
         int insert = userMapper.insert(user);
         //返回值表示影响的行数
@@ -88,8 +88,8 @@ class DemomptestApplicationTests {
     @Test
     public void testSelect2() {
         Map<String, Object> map = new HashMap<>();
-        map.put("name","Billie");
-        map.put("age",24);
+        map.put("name", "Billie");
+        map.put("age", 24);
         List<User> users = userMapper.selectByMap(map);
         System.out.println(users);
     }
@@ -101,7 +101,7 @@ class DemomptestApplicationTests {
     public void testSelectPage() {
 
         //1.创建分页对象
-        Page<User> page = new Page(2,3);//当前第一页，每页三行
+        Page<User> page = new Page(2, 3);//当前第一页，每页三行
         Page<User> userPage = userMapper.selectPage(page, null);
         //总页数
         long pages = userPage.getPages();
@@ -142,7 +142,7 @@ class DemomptestApplicationTests {
     public void testDeleteBatch() {
 
 
-        int i = userMapper.deleteBatchIds(Arrays.asList(2,3));
+        int i = userMapper.deleteBatchIds(Arrays.asList(2, 3));
 
         System.out.println(i);
     }
@@ -154,8 +154,18 @@ class DemomptestApplicationTests {
     public void testDeleteCondition() {
 
         Map<String, Object> map = new HashMap<>();
-        map.put("name","张三");
+        map.put("name", "张三");
         int i = userMapper.deleteByMap(map);
         System.out.println(i);
+    }
+
+    /**
+     * 逻辑删除
+     */
+    @Test
+    public void testLogicDeleted() {
+
+        int insert = userMapper.deleteById(1386266883114971137L);
+        System.out.println(insert);
     }
 }

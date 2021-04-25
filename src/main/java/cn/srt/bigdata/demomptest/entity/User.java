@@ -35,5 +35,6 @@ public class User {
 
     //逻辑删除
     @TableLogic
+    @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
 }

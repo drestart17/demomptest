@@ -16,6 +16,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("updateTime",new Date(),metaObject);
         //设置version默认值为1
         this.setFieldValByName("version",1,metaObject);
+        this.setFieldValByName("deleted",0,metaObject);
     }
 
     @Override
